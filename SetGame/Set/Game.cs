@@ -20,32 +20,37 @@
 
         private Random RandGen;
 
-        private int[] BaseValues;
+        private int[] PositionalValues;
 
         public int BoardSize { get; private set; }
+
+        public int SetSize { get; private set; }
 
         public HashSet<int> Board { get; private set; }
 
         /// <summary>
-        /// Original is 3 variations and 4 features (count, shape, shading and colour).
+        /// Original is 3 variations, 4 features (count, shape, shading and colour)
+        /// and set size 3.
         /// </summary>
         /// <param name="variations"></param>
         /// <param name="features"></param>
-        public Game(int variations, int features)
+        /// <param name="setSize"></param>
+        public Game(int variations, int features, int? setSize = null)
         {
             Deck = new List<int>();
             Variations = variations;
             Features = features;
-            BoardSize = variations * features;
+            BoardSize = variations * features; // will probably need to mess with this
             Board = new HashSet<int>();
             RandGen = new Random();
-            BaseValues = new int[features];
+            PositionalValues = new int[features];
+            SetSize = setSize ?? variations;
             for (int i = 0; i < features; i++)
             {
-                BaseValues[i] = (int) Math.Pow(variations, i);
+                PositionalValues[i] = (int) Math.Pow(variations, i);
             }
             
-            Deck = Enumerable.Range(0, (int)Math.Pow(variations, features)).ToList();
+            Deck = Enumerable.Range(0, (int) Math.Pow(variations, features)).ToList();
             InitialDeal(BoardSize);
         }
 
@@ -67,6 +72,11 @@
          */
         public bool IsSet(IEnumerable<int> submittedCards)
         {
+            if (submittedCards.Count() != SetSize)
+            {
+                return false;
+            }
+
             var convertedCards = new List<int[]>();
             foreach (var card in submittedCards)
             {
@@ -94,14 +104,29 @@
             return true;
         }
 
+        public int[] IntegerToCard(int cardValue)
+        {
+            return DecimalToBaseVariations(cardValue);
+        }
+
+        public int CardToInteger(int[] cardFeatures)
+        {
+            var toReturn = 0;
+            for (int i = 0; i < cardFeatures.Length; i++)
+            {
+                toReturn += PositionalValues[i] * cardFeatures[i];
+            }
+            return toReturn;
+        }
+
         private int[] DecimalToBaseVariations(int theDecimal)
         {
             int[] toReturn = new int[Features];
             int remainder = theDecimal;
             for (int i = Features - 1; i >= 0; i--)
             {
-                toReturn[i] = remainder / BaseValues[i];
-                remainder = remainder % BaseValues[i];
+                toReturn[i] = remainder / PositionalValues[i];
+                remainder = remainder % PositionalValues[i];
             }
 
             return toReturn;
