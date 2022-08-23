@@ -70,7 +70,7 @@
             var convertedCards = new List<int[]>();
             foreach (var card in submittedCards)
             {
-                convertedCards.Add(DecimalToBaseFeatureCount(card));
+                convertedCards.Add(DecimalToBaseVariations(card));
             }
 
             var hashSet = new HashSet<int>();
@@ -94,7 +94,7 @@
             return true;
         }
 
-        private int[] DecimalToBaseFeatureCount(int theDecimal)
+        private int[] DecimalToBaseVariations(int theDecimal)
         {
             int[] toReturn = new int[Features];
             int remainder = theDecimal;

@@ -1,4 +1,6 @@
-﻿namespace SetGame.Set.CardElements.FeatureEnums
+﻿using System.ComponentModel;
+
+namespace SetGame.Set.CardElements.FeatureEnums
 {
     public enum Count
     {
