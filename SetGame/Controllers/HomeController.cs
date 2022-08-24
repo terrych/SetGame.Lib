@@ -16,7 +16,10 @@ namespace SetGame.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var game = new Game(3, 4);
+            var boardViewModel = new BoardViewModel(game);
+
+            return View(boardViewModel);
         }
 
         public IActionResult Privacy()
@@ -27,9 +30,9 @@ namespace SetGame.Controllers
         public IActionResult NewGame()
         {
             var game = new Game(3, 4);
-            var breakpoint = 0;
+            var boardViewModel = new BoardViewModel(game);
 
-            return View("Index");
+            return View("Index", boardViewModel);
         }
 
         public IActionResult FindSet()

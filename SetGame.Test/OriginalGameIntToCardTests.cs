@@ -14,7 +14,7 @@ namespace SetGame.Test
             theCard[(int)FeatureRank.Count] = (int)Count.One;
             theCard[(int)FeatureRank.Shape] = (int)Shape.Diamond;
             theCard[(int)FeatureRank.Colour] = (int)Colour.Blue;
-            theCard[(int)FeatureRank.Shading] = (int)Shading.Shaded;
+            theCard[(int)FeatureRank.Shading] = (int)Shading.Striped;
 
             Assert.IsTrue(Enumerable.SequenceEqual(TheGame.IntegerToCard(48), theCard));
         }
@@ -26,7 +26,7 @@ namespace SetGame.Test
             theCard[(int)FeatureRank.Count] = (int)Count.Three;
             theCard[(int)FeatureRank.Shape] = (int)Shape.Squiggle;
             theCard[(int)FeatureRank.Colour] = (int)Colour.Red;
-            theCard[(int)FeatureRank.Shading] = (int)Shading.Shaded;
+            theCard[(int)FeatureRank.Shading] = (int)Shading.Striped;
 
             Assert.IsTrue(Enumerable.SequenceEqual(TheGame.IntegerToCard(29), theCard));
         }

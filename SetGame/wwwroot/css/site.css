@@ -25,3 +25,17 @@ body {
     border-radius: 8px;
     margin-bottom: 5px;
 }
+
+.board {
+    border: solid;
+    border-color: black;
+    border-radius: 10px;
+}
+
+.board__card {
+    border: solid;
+    border-color: gray;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    height: 150px;
+}

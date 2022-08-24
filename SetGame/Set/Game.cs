@@ -26,7 +26,7 @@
 
         public int SetSize { get; private set; }
 
-        public HashSet<int> Board { get; private set; }
+        public List<int> Board { get; private set; }
 
         /// <summary>
         /// Original is 3 variations, 4 features (count, shape, shading and colour)
@@ -41,7 +41,7 @@
             Variations = variations;
             Features = features;
             BoardSize = variations * features; // will probably need to mess with this
-            Board = new HashSet<int>();
+            Board = new List<int>();
             RandGen = new Random();
             PositionalValues = new int[features];
             SetSize = setSize ?? variations;
@@ -51,10 +51,10 @@
             }
             
             Deck = Enumerable.Range(0, (int) Math.Pow(variations, features)).ToList();
-            InitialDeal(BoardSize);
+            DealCards(BoardSize);
         }
 
-        public void InitialDeal(int countToDeal)
+        public void DealCards(int countToDeal)
         {
             for (int i = 0; i < countToDeal; i++)
             {
@@ -62,6 +62,20 @@
                 Board.Add(Deck[cardIndex]);
                 Deck.RemoveAt(cardIndex);
             }
+        }
+
+        public bool CheckSet(IEnumerable<int> submittedCards)
+        {
+            var toReturn = IsSet(submittedCards);
+            if (toReturn)
+            {
+                foreach (var card in submittedCards)
+                {
+                    // do removal and stuff
+                }
+            }
+
+            return toReturn;
         }
 
         /* Note that if we knew we were playing the original, this method would

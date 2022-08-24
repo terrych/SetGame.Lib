@@ -6,4 +6,34 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\Images\diamond_open_blue.png" />
+    <None Include="wwwroot\Images\diamond_open_green.png" />
+    <None Include="wwwroot\Images\diamond_open_red.png" />
+    <None Include="wwwroot\Images\diamond_solid_blue.png" />
+    <None Include="wwwroot\Images\diamond_solid_green.png" />
+    <None Include="wwwroot\Images\diamond_solid_red.png" />
+    <None Include="wwwroot\Images\diamond_striped_blue.png" />
+    <None Include="wwwroot\Images\diamond_striped_green.png" />
+    <None Include="wwwroot\Images\diamond_striped_red.png" />
+    <None Include="wwwroot\Images\oval_open_blue.png" />
+    <None Include="wwwroot\Images\oval_open_green.png" />
+    <None Include="wwwroot\Images\oval_open_red.png" />
+    <None Include="wwwroot\Images\oval_solid_blue.png" />
+    <None Include="wwwroot\Images\oval_solid_green.png" />
+    <None Include="wwwroot\Images\oval_solid_red.png" />
+    <None Include="wwwroot\Images\oval_striped_blue.png" />
+    <None Include="wwwroot\Images\oval_striped_green.png" />
+    <None Include="wwwroot\Images\oval_striped_red.png" />
+    <None Include="wwwroot\Images\squiggle_open_blue.png" />
+    <None Include="wwwroot\Images\squiggle_open_green.png" />
+    <None Include="wwwroot\Images\squiggle_open_red.png" />
+    <None Include="wwwroot\Images\squiggle_solid_blue.png" />
+    <None Include="wwwroot\Images\squiggle_solid_green.png" />
+    <None Include="wwwroot\Images\squiggle_solid_red.png" />
+    <None Include="wwwroot\Images\squiggle_striped_blue.png" />
+    <None Include="wwwroot\Images\squiggle_striped_green.png" />
+    <None Include="wwwroot\Images\squiggle_striped_red.png" />
+  </ItemGroup>
+
 </Project>
