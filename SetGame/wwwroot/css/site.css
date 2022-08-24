@@ -39,3 +39,7 @@ body {
     margin-bottom: 5px;
     height: 150px;
 }
+
+.board__card--selected {
+    background-color: yellow;
+}

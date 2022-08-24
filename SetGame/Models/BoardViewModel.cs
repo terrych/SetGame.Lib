@@ -36,6 +36,7 @@ namespace SetGame.Models
                 var enumType = Type.GetType("SetGame.Set.CardElements.FeatureEnums." + feature);
                 Attributes[feature] = enumType == typeof(Count) ? (card[i]+1).ToString() : Enum.ToObject(enumType, card[i]).ToString();
             }
+            Attributes["CardValue"] = value.ToString();
 
             var sb = new StringBuilder();
             sb.Append(Attributes["Shape"]);
