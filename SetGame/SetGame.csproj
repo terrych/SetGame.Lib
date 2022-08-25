@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -11,36 +11,6 @@
     <Content Remove="Set\**" />
     <EmbeddedResource Remove="Set\**" />
     <None Remove="Set\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\Images\diamond_open_blue.png" />
-    <None Include="wwwroot\Images\diamond_open_green.png" />
-    <None Include="wwwroot\Images\diamond_open_red.png" />
-    <None Include="wwwroot\Images\diamond_solid_blue.png" />
-    <None Include="wwwroot\Images\diamond_solid_green.png" />
-    <None Include="wwwroot\Images\diamond_solid_red.png" />
-    <None Include="wwwroot\Images\diamond_striped_blue.png" />
-    <None Include="wwwroot\Images\diamond_striped_green.png" />
-    <None Include="wwwroot\Images\diamond_striped_red.png" />
-    <None Include="wwwroot\Images\oval_open_blue.png" />
-    <None Include="wwwroot\Images\oval_open_green.png" />
-    <None Include="wwwroot\Images\oval_open_red.png" />
-    <None Include="wwwroot\Images\oval_solid_blue.png" />
-    <None Include="wwwroot\Images\oval_solid_green.png" />
-    <None Include="wwwroot\Images\oval_solid_red.png" />
-    <None Include="wwwroot\Images\oval_striped_blue.png" />
-    <None Include="wwwroot\Images\oval_striped_green.png" />
-    <None Include="wwwroot\Images\oval_striped_red.png" />
-    <None Include="wwwroot\Images\squiggle_open_blue.png" />
-    <None Include="wwwroot\Images\squiggle_open_green.png" />
-    <None Include="wwwroot\Images\squiggle_open_red.png" />
-    <None Include="wwwroot\Images\squiggle_solid_blue.png" />
-    <None Include="wwwroot\Images\squiggle_solid_green.png" />
-    <None Include="wwwroot\Images\squiggle_solid_red.png" />
-    <None Include="wwwroot\Images\squiggle_striped_blue.png" />
-    <None Include="wwwroot\Images\squiggle_striped_green.png" />
-    <None Include="wwwroot\Images\squiggle_striped_red.png" />
   </ItemGroup>
 
   <ItemGroup>
