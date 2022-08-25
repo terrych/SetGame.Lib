@@ -2,6 +2,8 @@
 {
     public class Game
     {
+        public Guid Id { get; private set; }
+
         /// <summary>
         /// Number of variations on each feature possible e.g. for original this would be 3 {count can be 1,2 or 3}.
         /// Also how many you need to make a set.
@@ -37,6 +39,7 @@
         /// <param name="setSize"></param>
         public Game(int variations, int features, int? setSize = null)
         {
+            Id = Guid.NewGuid();
             Deck = new List<int>();
             Variations = variations;
             Features = features;

@@ -25,11 +25,11 @@ export class Board extends Component {
 
     render() {
         return (
-            <div class="col-9 board">
+            <div className="col-9 board">
                 {Array(3).fill(1).map((el, i) =>
-                    <div class="row">
+                    <div className="row">
                         {Array(4).fill(1).map((el, i) =>
-                            <div class="col-3">
+                            <div className="col-3">
                                 {this.renderCard(7)}
                             </div>
                         )}
