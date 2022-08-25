@@ -32,12 +32,10 @@
 
         /// <summary>
         /// Original is 3 variations, 4 features (count, shape, shading and colour)
-        /// and set size 3.
         /// </summary>
         /// <param name="variations"></param>
         /// <param name="features"></param>
-        /// <param name="setSize"></param>
-        public Game(int variations, int features, int? setSize = null)
+        public Game(int variations, int features)
         {
             Id = Guid.NewGuid();
             Deck = new List<int>();
@@ -47,7 +45,7 @@
             Board = new List<int>();
             RandGen = new Random();
             PositionalValues = new int[features];
-            SetSize = setSize ?? variations;
+            SetSize = variations;
             for (int i = 0; i < features; i++)
             {
                 PositionalValues[i] = (int) Math.Pow(variations, i);
