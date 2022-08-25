@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/*Stuff from move begins here*/
+.menu-button {
+    display: block;
+    border: solid;
+    border-color: blue;
+    width: 70%;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+
+.board {
+    border: solid;
+    border-color: black;
+    border-radius: 10px;
+}
+
+.board__card {
+    border: solid;
+    border-color: gray;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    height: 150px;
+}
+
+.board__card--selected {
+    background-color: yellow;
+}

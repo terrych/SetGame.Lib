@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SetGame\SetGame.csproj" />
+    <ProjectReference Include="..\SetGame.Api\SetGame.Api.csproj" />
   </ItemGroup>
 
 </Project>

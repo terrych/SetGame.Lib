@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Set\**" />
+    <Content Remove="Set\**" />
+    <EmbeddedResource Remove="Set\**" />
+    <None Remove="Set\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\Images\diamond_open_blue.png" />
     <None Include="wwwroot\Images\diamond_open_green.png" />
     <None Include="wwwroot\Images\diamond_open_red.png" />
@@ -34,6 +41,10 @@
     <None Include="wwwroot\Images\squiggle_striped_blue.png" />
     <None Include="wwwroot\Images\squiggle_striped_green.png" />
     <None Include="wwwroot\Images\squiggle_striped_red.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
