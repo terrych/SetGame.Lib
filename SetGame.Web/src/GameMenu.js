@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import "./App.css";
 
 function GameMenuButton(props) {
-    console.log('props', props);
     return (
         <div className="menu-button">{props.text}</div>
     );

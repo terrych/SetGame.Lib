@@ -28,7 +28,7 @@
 
         public int SetSize { get; private set; }
 
-        public List<int> Board { get; private set; }
+        public List<int[]> Board { get; private set; }
 
         /// <summary>
         /// Original is 3 variations, 4 features (count, shape, shading and colour)
@@ -42,7 +42,7 @@
             Variations = variations;
             Features = features;
             BoardSize = variations * features; // will probably need to mess with this
-            Board = new List<int>();
+            Board = new List<int[]>();
             RandGen = new Random();
             PositionalValues = new int[features];
             SetSize = variations;
@@ -60,7 +60,7 @@
             for (int i = 0; i < countToDeal; i++)
             {
                 var cardIndex = RandGen.Next(Deck.Count);
-                Board.Add(Deck[cardIndex]);
+                Board.Add(IntegerToCard(Deck[cardIndex]));
                 Deck.RemoveAt(cardIndex);
             }
         }

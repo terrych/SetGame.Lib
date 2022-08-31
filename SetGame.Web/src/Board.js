@@ -6,7 +6,7 @@ export class Board extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cards: Array(12).fill(null)
+            board: this.props.board ?? []
         }
     }
 
@@ -14,23 +14,25 @@ export class Board extends Component {
         console.log(i);
     }
 
-    renderCard(input) {
+    renderCard(array) {
+        //console.log(array);
         return (
             <Card
-                value={input}
-                onClick={() => this.handleClick(input)}
+                array={array}
+                /*onClick={() => this.handleClick(input)}*/
             />
         );
     }
 
     render() {
+        console.log('board board', this.state.board); // fix this
         return (
             <div className="col-9 board">
                 {Array(3).fill(1).map((el, i) =>
                     <div className="row">
-                        {Array(4).fill(1).map((el, i) =>
+                        {Array(4).fill(1).map((el2, j) =>
                             <div className="col-3">
-                                {this.renderCard(7)}
+                                {this.renderCard(this.state.board && this.state.board.length > 0 ? this.state.board[4 * i + j] : [0, 0, 0, 0])}
                             </div>
                         )}
                     </div>
