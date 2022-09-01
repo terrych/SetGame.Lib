@@ -30,8 +30,6 @@ import ovalSolidBlue from "./Images/oval_solid_blue.png";
 
 export class Card extends Component {
     render() {
-        console.log('in the card', this.props);
-
         // array in back end ranks features by count, then shape, then colour then finally shading
 
         const cardIcons = [ // shape
@@ -97,9 +95,14 @@ export class Card extends Component {
             return cardIcons[array[shapeRank]][array[colourRank]][array[shadingRank]];
         }
 
+        function selectCard(event) {
+            event.currentTarget.classList.toggle('board__card--selected');
+        }
+
         return (
             <div
                 className="board__card"
+                onClick={(e) => selectCard(e)}
             >
                 {Array(this.props.array[countRank] + 1).fill(1).map((el, i) =>
                     <div><img src={getIcon(this.props.array)} /></div>

@@ -10,22 +10,15 @@ export class Board extends Component {
         }
     }
 
-    handleCardClick(i) {
-        console.log(i);
-    }
-
     renderCard(array) {
-        //console.log(array);
         return (
             <Card
                 array={array}
-                /*onClick={() => this.handleClick(input)}*/
             />
         );
     }
 
     render() {
-        console.log('board board', this.state.board); // fix this
         return (
             <div className="col-9 board">
                 {Array(3).fill(1).map((el, i) =>
