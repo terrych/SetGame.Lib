@@ -17,7 +17,7 @@ export class Board extends Component {
         console.log('board', this.state.board);
 
         console.log('before');
-        setTimeout(function () { // this is awful but without it the selection of last clicked has not been removed as it is not in the classList DOMTokenList
+        setTimeout(function () { // this is awful but without it the selection of last card clicked has not been removed as it is not yet in the classList DOMTokenList
             // do the check and update board if necessary
 
             // find selected cards and deselect
