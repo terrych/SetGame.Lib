@@ -29,6 +29,22 @@ import ovalSolidGreen from "./Images/oval_solid_green.png";
 import ovalSolidBlue from "./Images/oval_solid_blue.png";
 
 export class Card extends Component {
+
+    selectCard(event) {
+        var selectedCount = 0;
+        if (event.currentTarget.classList.contains('board__card--selected')) {
+            selectedCount = this.props.decrementCount(event);
+            console.log(selectedCount);
+        } else {
+            selectedCount = this.props.incrementCount(event);
+            console.log(selectedCount);
+        }
+        //console.log(event.currentTarget.classList);
+        //if (selectedCount < 3) {
+        event.currentTarget.classList.toggle('board__card--selected');
+        //}
+    }
+
     render() {
         // array in back end ranks features by count, then shape, then colour then finally shading
 
@@ -95,14 +111,11 @@ export class Card extends Component {
             return cardIcons[array[shapeRank]][array[colourRank]][array[shadingRank]];
         }
 
-        function selectCard(event) {
-            event.currentTarget.classList.toggle('board__card--selected');
-        }
-
         return (
             <div
                 className="board__card"
-                onClick={(e) => selectCard(e)}
+                onClick={(e) => this.selectCard(e)}
+                position={this.props.position}
             >
                 {Array(this.props.array[countRank] + 1).fill(1).map((el, i) =>
                     <div><img src={getIcon(this.props.array)} /></div>

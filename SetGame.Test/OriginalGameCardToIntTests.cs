@@ -15,7 +15,7 @@ namespace SetGame.Test
             theCard[(int)FeatureRank.Colour] = (int)Colour.Blue;
             theCard[(int)FeatureRank.Shading] = (int)Shading.Striped;
 
-            Assert.IsTrue(TheGame.CardToInteger(theCard) == 48);
+            Assert.IsTrue(TheGame.CardArrayToInteger(theCard) == 48);
         }
 
         [TestMethod]
@@ -27,7 +27,7 @@ namespace SetGame.Test
             theCard[(int)FeatureRank.Colour] = (int)Colour.Red;
             theCard[(int)FeatureRank.Shading] = (int)Shading.Striped;
 
-            Assert.IsTrue(TheGame.CardToInteger(theCard) == 29);
+            Assert.IsTrue(TheGame.CardArrayToInteger(theCard) == 29);
         }
     }
 }

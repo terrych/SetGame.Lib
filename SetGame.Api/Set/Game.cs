@@ -41,7 +41,7 @@
             Deck = new List<int>();
             Variations = variations;
             Features = features;
-            BoardSize = variations * features; // will probably need to mess with this
+            BoardSize = variations * features; // will probably want to mess with this or add as a setting
             Board = new List<int[]>();
             RandGen = new Random();
             PositionalValues = new int[features];
@@ -124,7 +124,7 @@
             return DecimalToBaseVariations(cardValue);
         }
 
-        public int CardToInteger(int[] cardFeatures)
+        public int CardArrayToInteger(int[] cardFeatures)
         {
             var toReturn = 0;
             for (int i = 0; i < cardFeatures.Length; i++)

@@ -38,9 +38,9 @@ namespace SetGame.Test
             cardThree[(int)FeatureRank.Shape] = (int)Shape.Squiggle;
             cardThree[(int)FeatureRank.Colour] = (int)Colour.Red;
             cardThree[(int)FeatureRank.Shading] = (int)Shading.Solid;
-            submittedCards.Add(TheGame.CardToInteger(cardOne));
-            submittedCards.Add(TheGame.CardToInteger(cardTwo));
-            submittedCards.Add(TheGame.CardToInteger(cardThree));
+            submittedCards.Add(TheGame.CardArrayToInteger(cardOne));
+            submittedCards.Add(TheGame.CardArrayToInteger(cardTwo));
+            submittedCards.Add(TheGame.CardArrayToInteger(cardThree));
 
             Assert.IsTrue(TheGame.IsSet(submittedCards));
         }
@@ -67,9 +67,9 @@ namespace SetGame.Test
             cardThree[(int)FeatureRank.Shape] = (int)Shape.Diamond;
             cardThree[(int)FeatureRank.Colour] = (int)Colour.Red;
             cardThree[(int)FeatureRank.Shading] = (int)Shading.Solid;
-            submittedCards.Add(TheGame.CardToInteger(cardOne));
-            submittedCards.Add(TheGame.CardToInteger(cardTwo));
-            submittedCards.Add(TheGame.CardToInteger(cardThree));
+            submittedCards.Add(TheGame.CardArrayToInteger(cardOne));
+            submittedCards.Add(TheGame.CardArrayToInteger(cardTwo));
+            submittedCards.Add(TheGame.CardArrayToInteger(cardThree));
 
             Assert.IsTrue(TheGame.IsSet(submittedCards));
         }
@@ -96,9 +96,9 @@ namespace SetGame.Test
             cardThree[(int)FeatureRank.Shape] = (int)Shape.Diamond;
             cardThree[(int)FeatureRank.Colour] = (int)Colour.Green;
             cardThree[(int)FeatureRank.Shading] = (int)Shading.Solid;
-            submittedCards.Add(TheGame.CardToInteger(cardOne));
-            submittedCards.Add(TheGame.CardToInteger(cardTwo));
-            submittedCards.Add(TheGame.CardToInteger(cardThree));
+            submittedCards.Add(TheGame.CardArrayToInteger(cardOne));
+            submittedCards.Add(TheGame.CardArrayToInteger(cardTwo));
+            submittedCards.Add(TheGame.CardArrayToInteger(cardThree));
 
             Assert.IsTrue(TheGame.IsSet(submittedCards));
         }
@@ -125,9 +125,9 @@ namespace SetGame.Test
             cardThree[(int)FeatureRank.Shape] = (int)Shape.Oval;
             cardThree[(int)FeatureRank.Colour] = (int)Colour.Blue;
             cardThree[(int)FeatureRank.Shading] = (int)Shading.Open;
-            submittedCards.Add(TheGame.CardToInteger(cardOne));
-            submittedCards.Add(TheGame.CardToInteger(cardTwo));
-            submittedCards.Add(TheGame.CardToInteger(cardThree));
+            submittedCards.Add(TheGame.CardArrayToInteger(cardOne));
+            submittedCards.Add(TheGame.CardArrayToInteger(cardTwo));
+            submittedCards.Add(TheGame.CardArrayToInteger(cardThree));
 
             Assert.IsTrue(TheGame.IsSet(submittedCards));
         }
@@ -154,9 +154,9 @@ namespace SetGame.Test
             cardThree[(int)FeatureRank.Shape] = (int)Shape.Diamond;
             cardThree[(int)FeatureRank.Colour] = (int)Colour.Red;
             cardThree[(int)FeatureRank.Shading] = (int)Shading.Solid;
-            submittedCards.Add(TheGame.CardToInteger(cardOne));
-            submittedCards.Add(TheGame.CardToInteger(cardTwo));
-            submittedCards.Add(TheGame.CardToInteger(cardThree));
+            submittedCards.Add(TheGame.CardArrayToInteger(cardOne));
+            submittedCards.Add(TheGame.CardArrayToInteger(cardTwo));
+            submittedCards.Add(TheGame.CardArrayToInteger(cardThree));
 
             Assert.IsFalse(TheGame.IsSet(submittedCards));
         }
@@ -183,9 +183,9 @@ namespace SetGame.Test
             cardThree[(int)FeatureRank.Shape] = (int)Shape.Diamond;
             cardThree[(int)FeatureRank.Colour] = (int)Colour.Blue;
             cardThree[(int)FeatureRank.Shading] = (int)Shading.Striped;
-            submittedCards.Add(TheGame.CardToInteger(cardOne));
-            submittedCards.Add(TheGame.CardToInteger(cardTwo));
-            submittedCards.Add(TheGame.CardToInteger(cardThree));
+            submittedCards.Add(TheGame.CardArrayToInteger(cardOne));
+            submittedCards.Add(TheGame.CardArrayToInteger(cardTwo));
+            submittedCards.Add(TheGame.CardArrayToInteger(cardThree));
 
             Assert.IsFalse(TheGame.IsSet(submittedCards));
         }
@@ -212,9 +212,9 @@ namespace SetGame.Test
             cardThree[(int)FeatureRank.Shape] = (int)Shape.Squiggle;
             cardThree[(int)FeatureRank.Colour] = (int)Colour.Blue;
             cardThree[(int)FeatureRank.Shading] = (int)Shading.Open;
-            submittedCards.Add(TheGame.CardToInteger(cardOne));
-            submittedCards.Add(TheGame.CardToInteger(cardTwo));
-            submittedCards.Add(TheGame.CardToInteger(cardThree));
+            submittedCards.Add(TheGame.CardArrayToInteger(cardOne));
+            submittedCards.Add(TheGame.CardArrayToInteger(cardTwo));
+            submittedCards.Add(TheGame.CardArrayToInteger(cardThree));
 
             Assert.IsFalse(TheGame.IsSet(submittedCards));
         }

@@ -37,5 +37,13 @@ namespace SetGame.Controllers
 
             return new List<int>();
         }
+
+        [HttpPut("SubmitSet")]
+        public List<int> SubmitSet([FromBody] List<List<int>> input) // return board
+        {
+            var breakpoint = 0;
+
+            return new List<int>();
+        }
     }
 }
