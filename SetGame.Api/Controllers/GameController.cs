@@ -23,27 +23,26 @@ namespace SetGame.Controllers
         }
 
         [HttpGet("FindSet")]
-        public List<int> FindSet() // return board with highlights
+        public Game FindSet() // return board with highlights
         {
             var breakpoint = 0;
 
-            return new List<int>();
+            return new Game(3, 4);
         }
 
         [HttpGet("OpenThreeCards")]
-        public List<int> OpenThreeCards() // return board
+        public Game OpenThreeCards() // return board
         {
             var breakpoint = 0;
 
-            return new List<int>();
+            return new Game(3, 4);
         }
 
         [HttpPut("SubmitSet")]
-        public List<int> SubmitSet([FromBody] List<List<int>> input) // return board
+        public Game SubmitSet([FromBody] List<List<int>> input) // return board
         {
             var breakpoint = 0;
-
-            return new List<int>();
+            return new Game(3, 4);
         }
     }
 }

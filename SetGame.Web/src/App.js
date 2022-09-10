@@ -6,6 +6,7 @@ import { Game } from './Game';
 export default class App extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             game: {
             }, 
@@ -19,7 +20,7 @@ export default class App extends Component {
 
     static renderGame(input) {
         return (
-            <Game game={input} />
+            <Game game={input}/>
         );
     }
 

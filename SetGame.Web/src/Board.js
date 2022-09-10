@@ -67,7 +67,7 @@ export class Board extends Component {
 
     render() {
         return (
-            <div className="col-9 board">
+            <div className="col-9 board">{/* onClick={this.props.updateGame }*/}
                 {Array(3).fill(1).map((el, i) =>
                     <div className="row">
                         {Array(4).fill(1).map((el2, j) =>
