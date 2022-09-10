@@ -30,6 +30,8 @@
 
         public List<int[]> Board { get; private set; }
 
+        public List<int[]> SelectedCards { get; set; }
+
         /// <summary>
         /// Original is 3 variations, 4 features (count, shape, shading and colour)
         /// </summary>
@@ -43,6 +45,7 @@
             Features = features;
             BoardSize = variations * features; // will probably want to mess with this or add as a setting
             Board = new List<int[]>();
+            SelectedCards = new List<int[]>();
             RandGen = new Random();
             PositionalValues = new int[features];
             SetSize = variations;

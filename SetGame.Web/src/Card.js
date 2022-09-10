@@ -34,11 +34,10 @@ export class Card extends Component {
         var selectedCount = 0;
         if (event.currentTarget.classList.contains('board__card--selected')) {
             selectedCount = this.props.decrementCount(event);
-            console.log(selectedCount);
         } else {
             selectedCount = this.props.incrementCount(event);
-            console.log(selectedCount);
         }
+
         //console.log(event.currentTarget.classList);
         //if (selectedCount < 3) {
         event.currentTarget.classList.toggle('board__card--selected');

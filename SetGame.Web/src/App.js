@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from "./logo.svg";
 import "./App.css"; 
 import { Game } from './Game';
+import { Board } from './Board';
+import { GameMenu } from './GameMenu';
 
 export default class App extends Component {
     constructor(props) {
@@ -18,16 +20,24 @@ export default class App extends Component {
         this.populateGame();
     }
 
-    static renderGame(input) {
+    getGame = function () {
+        return this.state.game;
+    }
+
+    updateGame = function(gameState) {
+        this.setState({game: gameState});
+    }
+
+    renderGame(gameState) {
         return (
-            <Game game={input}/>
+            <Game game={gameState} updateGame={this.updateGame.bind(this)} getGame={this.getGame.bind(this) } />
         );
     }
 
     render() {
         let contents = this.state.loading
             ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
-            : App.renderGame(this.state.game);
+            : this.renderGame(this.state.game);
 
         return (
             <div className="row game">
