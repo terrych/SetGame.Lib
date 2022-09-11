@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import logo from "./logo.svg";
 import "./App.css"; 
 import { Game } from './Game';
-import { Board } from './Board';
-import { GameMenu } from './GameMenu';
 
 export default class App extends Component {
     constructor(props) {
