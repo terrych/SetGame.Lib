@@ -9,29 +9,16 @@ function GameMenuButton(props) {
 //<a href="{props.url}"> {props.text} </a>
 
 export class GameMenu extends Component {
-    constructor(props) {
-        super(props);
-        this.callUrl = function (url, verb) {
-            return function () {
-                console.log(url);
-                //await fetch(url, verb);
-                props.updateGame('yes');
-            }
-        };
-        this.buttons = [
-            { key: "game-button-1", url: "/Game/NewGame?variations=3&features=4", text: "New Game", verb: "GET" },
-            { key: "game-button-2", url: "/Game/FindSet", text: "Find Set", verb: "GET" },
-            { key: "game-button-3", url: "/Game/OpenThreeCards", text: "Open Three Cards", verb: "GET" },
-        ];
-        this.settings = [
-            { key: "variation-number", text: "Variations", value: 3 },
-            { key: "feature-number", text: "Features", value: 4 }
-        ];
-    }
 
-    //componentDidMount() {
-    //    this.registerButtonFunctions();
-    //}
+    buttons = [
+        { key: "game-button-1", url: "/Game/NewGame?variations=3&features=4", text: "New Game", verb: "GET" },
+        { key: "game-button-2", url: "/Game/FindSet", text: "Find Set", verb: "GET" },
+        { key: "game-button-3", url: ("/Game/OpenThreeCards?gameid" + this.props.getGame().id), text: "Open Three Cards", verb: "GET" },
+    ];
+    settings = [
+        { key: "variation-number", text: "Variations", value: 3 },
+        { key: "feature-number", text: "Features", value: 4 }
+    ];
 
     async fetch(url, verb) {
         //const url = 'https://localhost:7072/Game/NewGame?variations=3&features=4';

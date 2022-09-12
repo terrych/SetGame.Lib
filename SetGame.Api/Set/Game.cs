@@ -1,4 +1,6 @@
-﻿namespace SetGame.Set
+﻿using SetGame.Api.Set;
+
+namespace SetGame.Set
 {
     public class Game
     {
@@ -57,6 +59,8 @@
             Deck = Enumerable.Range(0, (int) Math.Pow(variations, features)).ToList();
             DealCards(BoardSize);
         }
+
+        //public Game Initialize()
 
         public void DealCards(int countToDeal)
         {
@@ -120,6 +124,21 @@
             }
 
             return true;
+        }
+
+        public GameViewModel ToViewModel()
+        {
+            var gvm = new GameViewModel()
+            {
+                Id = Id,
+                Variations = Variations,
+                Features = Features,
+                BoardSize = BoardSize,
+                SetSize = SetSize,
+                Board = Board,
+                SelectedCards = SelectedCards
+            };
+            return gvm;
         }
 
         public int[] IntegerToCard(int cardValue)

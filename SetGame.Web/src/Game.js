@@ -8,7 +8,7 @@ export class Game extends Component {
         var game = this.props.getGame();
         return (
             <>
-                <GameMenu updateGame={this.props.updateGame.bind(this) } />
+                <GameMenu updateGame={this.props.updateGame.bind(this)} getGame={this.props.getGame.bind(this) } />
                 <Board board={game.board} updateGame={this.props.updateGame.bind(this)} getGame={this.props.getGame.bind(this) } />
             </>
         );
