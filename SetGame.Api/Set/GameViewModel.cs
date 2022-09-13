@@ -15,5 +15,9 @@
         public List<int[]> Board { get; set; }
 
         public List<int[]> SelectedCards { get; set; }
+
+        public List<int> HighlightedCards { get; set; }
+
+        public string Message { get; set; }
     }
 }

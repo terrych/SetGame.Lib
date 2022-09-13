@@ -110,6 +110,10 @@ export class Card extends Component {
             return cardIcons[array[shapeRank]][array[colourRank]][array[shadingRank]];
         }
 
+        function returnImage(el, i, array) {
+            return <div><img src={array} /></div>
+        }
+
         return (
             <div
                 className="board__card"
@@ -117,7 +121,7 @@ export class Card extends Component {
                 position={this.props.position}
             >
                 {Array(this.props.array[countRank] + 1).fill(1).map((el, i) =>
-                    <div><img src={getIcon(this.props.array)} /></div>
+                    returnImage(el, i, getIcon(this.props.array))
                 )}
             </div>
         );

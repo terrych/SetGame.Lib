@@ -13,6 +13,6 @@ namespace SetGame.Test
     [TestClass]
     public abstract class OriginalGameTests
     {
-        public Game TheGame = new Game(3, 4);
+        public Game TheGame = new Game().InitializeNewGame(3, 4);
     }
 }

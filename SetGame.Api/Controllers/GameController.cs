@@ -12,8 +12,7 @@ namespace SetGame.Controllers
 {
     [ApiController]
     [Route("Game")]
-    //[ApiExplorerSettings(IgnoreApi = true)]
-    public class GameController : ControllerBase //may need to later go with ControllerBase if it turns out this is MVC specific controller
+    public class GameController : ControllerBase
     {
         private readonly ILogger<GameController> _logger;
         private readonly ICommandHandler<NewGameCommand, Game> _createGameCommandHandler;
@@ -31,18 +30,21 @@ namespace SetGame.Controllers
         [HttpGet("NewGame")]
         public GameViewModel NewGame(int variations, int features) // also add setsize etc?
         {
-            var newGame = new Game(variations, features);
+            var newGame = new Game().InitializeNewGame(variations, features);
             _createGameCommandHandler.Execute(new NewGameCommand() { Game = newGame });
 
             return newGame.ToViewModel();
         }
 
         [HttpGet("FindSet")]
-        public GameViewModel FindSet(/*Guid gameId*/) // return board with highlights
+        public GameViewModel FindSet(Guid gameId) // return board with highlights
         {
-            var breakpoint = 0;
+            var theGame = _gameQueryHandler.Execute(gameId);
+            var set = theGame.FindSet();
+            _updateGameCommandHandler.Execute(new UpdateGameCommand() { GameId = theGame.Id, Game = theGame });
+            theGame.HighlightedCards = set;
 
-            return new Game(3, 4).ToViewModel(); ;
+            return theGame.ToViewModel(set.Count > 0 ? "A set was found" : "No set was found, deal more cards.");
         }
 
         [HttpGet("OpenThreeCards")]
@@ -58,7 +60,7 @@ namespace SetGame.Controllers
         public GameViewModel SubmitSet(/*Guid gameId,*/ [FromBody] List<List<int>> input) // return board
         {
             var breakpoint = 0;
-            return new Game(3, 4).ToViewModel(); ;
+            return new Game().InitializeNewGame(3, 4).ToViewModel(); ;
         }
     }
 }

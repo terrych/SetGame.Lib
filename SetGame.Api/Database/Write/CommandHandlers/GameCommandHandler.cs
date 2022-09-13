@@ -16,7 +16,7 @@ namespace SetGame.Api.Database.Write.CommandHandlers
 
         public Game Execute(NewGameCommand command)
         {
-            var now = DateTime.Now;
+            var now = DateTime.UtcNow;
             _setGameContext.Games.Add(
                 new GameModel() 
                 { 
@@ -33,6 +33,7 @@ namespace SetGame.Api.Database.Write.CommandHandlers
         {
             var theGame = _setGameContext.Games.Where(x => x.Id.Equals(command.GameId)).FirstOrDefault();
             theGame.GameJson = JsonConvert.SerializeObject(command.Game);
+            theGame.LastUpdated = DateTime.UtcNow;
             _setGameContext.SaveChanges();
         }
     }

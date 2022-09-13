@@ -22,7 +22,8 @@ export default class App extends Component {
         return this.state.game;
     }
 
-    updateGame = function(gameState) {
+    updateGame = function (gameState) {
+        console.log('updateGame id', gameState.id);
         this.setState({game: gameState});
     }
 

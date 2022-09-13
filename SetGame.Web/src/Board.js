@@ -63,20 +63,21 @@ export class Board extends Component {
     render() {
         var board = this.props.getGame().board;
         var columns = 4;
-        var rows = Math.ceil(this.props.getGame().board.length / columns);
+        var rows = Math.ceil(board.length / columns);
 
         return (
             <div className="col-9 board">
                 {Array(rows).fill(1).map((el, i) =>
                     <div className="row">
-                        {Array(columns).fill(1).map((el2, j) =>
+                        {Array(board.length - columns * i > columns ? columns : board.length - columns * i).fill(1).map((el2, j) =>
                             <div className="col-3">
-                                {this.renderCard((board && board.length > 0 ? board[4 * i + j] : [0, 0, 0, 0]), 4 * i + j)}
+                                {this.renderCard((board && board.length > 0 ? board[columns * i + j] : [0, 0, 0, 0]), columns * i + j)}
                             </div>
                         )}
                     </div>
                 )}
             </div>
+            /*{this.props.getGame().message}*/
         );
     }
 }
