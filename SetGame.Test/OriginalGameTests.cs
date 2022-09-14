@@ -1,4 +1,5 @@
-﻿using SetGame.Set;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SetGame.Set;
 
 namespace SetGame.Test
 {
@@ -13,6 +14,6 @@ namespace SetGame.Test
     [TestClass]
     public abstract class OriginalGameTests
     {
-        public Game TheGame = new Game(3, 4);
+        public Game TheGame = new Game().InitializeNewGame(3, 4);
     }
 }

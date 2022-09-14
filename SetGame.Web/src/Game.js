@@ -4,15 +4,12 @@ import { Board } from './Board';
 import { GameMenu } from './GameMenu';
 
 export class Game extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
+        var game = this.props.getGame();
         return (
             <>
-                <GameMenu />
-                <Board />
+                <GameMenu updateGame={this.props.updateGame.bind(this)} getGame={this.props.getGame.bind(this) } />
+                <Board board={game.board} updateGame={this.props.updateGame.bind(this)} getGame={this.props.getGame.bind(this) } />
             </>
         );
     }
