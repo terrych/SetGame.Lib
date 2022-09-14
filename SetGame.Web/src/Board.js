@@ -3,46 +3,51 @@ import "./App.css";
 import { Card } from './Card';
 
 export class Board extends Component {
-    
-    // really need to fix this and remove the timeout since I'm probably inviting race conditions
-    checkIfSet = function () { // should truncate the "set" to first 3 (or set size) if longer
 
-        setTimeout(function () { // this is awful but without it the selection of last card clicked has not been removed as it is not yet in the classList DOMTokenList
-            // do the check and update board if necessary
-
-            // find selected cards and deselect
-            var selected = document.getElementsByClassName('board__card--selected');
-            //while (selected.length > 0) {
-            //    selected[0].classList.remove('board__card--selected');
-            //}
-            for (var elements = document.getElementsByClassName('board__card--selected'), i = 0, l = elements.length; l > i; i++) {
-                elements[0].classList.remove("board__card--selected");
-            }
-        }, 10);
-
-        var gameState = this.props.getGame();
-        gameState.selectedCards = [];
-        this.props.updateGame(gameState);
+    async submitSet(theSet) {
+        console.log('theSet', theSet);
+        fetch(
+            'https://localhost:7072' + "/Game/SubmitSet?gameid=" + this.props.getGame().id,
+            {
+                method: "PUT",
+                body: JSON.stringify(theSet),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+            .then((response) => response.json())
+            .then((result) => this.props.updateGame(result));
+        //const data = await response.json().then(this.props.updateGame(data));
     }
 
-    incrementSelectedCount = function (event) {
+    
+    async checkIfSet() {
+        var gameState = this.props.getGame();
+        var submittedSet = gameState.selectedCards.slice(0, gameState.setSize);
+        console.log('submitted', submittedSet);
+        await this.submitSet(submittedSet);
+
+        gameState.selectedCards = [];
+        this.props.updateGame(gameState);
+        console.log(this.props.getGame());
+    }
+
+    selectCard = function (event) {
         var position = parseInt(event.currentTarget.attributes.position.value);
         var gameState = this.props.getGame()
         gameState.selectedCards.push(position);
         this.props.updateGame(gameState);
-        if (gameState.selectedCards.length >= 3) {
+        if (gameState.selectedCards.length >= gameState.setSize) {
             this.checkIfSet();
         }
         return this.props.getGame().selectedCards.length; // use function as checkIfSet will update count
     }
 
-    decrementSelectedCount = function (event) {
+    deselectCard = function (event) {
         var position = parseInt(event.currentTarget.attributes.position.value);
         var gameState = this.props.getGame();
         for (var i = 0; i < gameState.selectedCards.length; i++) {
-
             if (gameState.selectedCards[i] === position) {
-
                 gameState.selectedCards.splice(i, 1);
             }
 
@@ -55,7 +60,12 @@ export class Board extends Component {
     renderCard(array, position) {
         return (
             <Card
-                array={array} incrementCount={this.incrementSelectedCount.bind(this)} decrementCount={this.decrementSelectedCount.bind(this)} position={position}
+                array={array}
+                position={position}
+                selectCard={this.selectCard.bind(this)}
+                deselectCard={this.deselectCard.bind(this)}
+                getGame={this.props.getGame.bind(this)}
+                updateGame={this.props.updateGame.bind(this)}
             />
         );
     }

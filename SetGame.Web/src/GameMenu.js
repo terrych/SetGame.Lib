@@ -15,12 +15,6 @@ export class GameMenu extends Component {
         { key: "feature-number", text: "Features", value: 4 }
     ];
 
-    async fetch(url, verb) {
-        const response = await fetch('https://localhost:7072/' + url, { method: verb })
-        const data = await response.json();
-        console.log('data', data)
-    }
-
     async mutateGameState(url, verb) {
         console.log(url, verb);
         const response = await fetch('https://localhost:7072' + url, { method: verb })

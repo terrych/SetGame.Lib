@@ -30,17 +30,21 @@ import ovalSolidBlue from "./Images/oval_solid_blue.png";
 
 export class Card extends Component {
 
-    selectCard(event) {
-        var selectedCount = 0;
+    handleCardClick(event) {
+        var gameState = this.props.getGame();
+        gameState.highlightedCards = [];
+
+        this.props.updateGame(gameState);
+
         if (event.currentTarget.classList.contains('board__card--selected')) {
-            selectedCount = this.props.decrementCount(event);
+            this.props.deselectCard(event);
         } else {
-            selectedCount = this.props.incrementCount(event);
+            this.props.selectCard(event);
         }
 
         //console.log(event.currentTarget.classList);
         //if (selectedCount < 3) {
-        event.currentTarget.classList.toggle('board__card--selected');
+        //event.currentTarget.classList.toggle('board__card--selected');
         //}
     }
 
@@ -116,8 +120,10 @@ export class Card extends Component {
 
         return (
             <div
-                className="board__card"
-                onClick={(e) => this.selectCard(e)}
+                className={"board__card " +
+                    (this.props.getGame().selectedCards.includes(this.props.position) ? "board__card--selected " : "") +
+                    (this.props.getGame().highlightedCards.includes(this.props.position) ? "board__card--highlighted " : "")}
+                onClick={(e) => this.handleCardClick(e)}
                 position={this.props.position}
             >
                 {Array(this.props.array[countRank] + 1).fill(1).map((el, i) =>

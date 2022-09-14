@@ -22,7 +22,8 @@ namespace SetGame.Test
         [TestMethod]
         public void RedSolidSquigglesWithDifferentCountsAreSet()
         {
-            List<int> submittedCards = new List<int>();
+            List<int[]> submittedCardsArray = new List<int[]>();
+            List<int> submittedCardsInt = new List<int>();
             int[] cardOne = new int[TheGame.Features];
             int[] cardTwo = new int[TheGame.Features];
             int[] cardThree = new int[TheGame.Features];
@@ -38,11 +39,14 @@ namespace SetGame.Test
             cardThree[(int)FeatureRank.Shape] = (int)Shape.Squiggle;
             cardThree[(int)FeatureRank.Colour] = (int)Colour.Red;
             cardThree[(int)FeatureRank.Shading] = (int)Shading.Solid;
-            submittedCards.Add(TheGame.CardArrayToInteger(cardOne));
-            submittedCards.Add(TheGame.CardArrayToInteger(cardTwo));
-            submittedCards.Add(TheGame.CardArrayToInteger(cardThree));
+            submittedCardsArray.Add(cardOne);
+            submittedCardsArray.Add(cardTwo);
+            submittedCardsArray.Add(cardThree);
+            submittedCardsInt.Add(TheGame.CardArrayToInteger(cardOne));
+            submittedCardsInt.Add(TheGame.CardArrayToInteger(cardTwo));
+            submittedCardsInt.Add(TheGame.CardArrayToInteger(cardThree));
 
-            Assert.IsTrue(TheGame.IsSet(submittedCards));
+            Assert.IsTrue(TheGame.IsSetInts(submittedCardsInt) && TheGame.IsSetArrays(submittedCardsArray));
         }
 
         /// <summary>
@@ -51,7 +55,8 @@ namespace SetGame.Test
         [TestMethod]
         public void RedDiamondsWithDifferentShadingAndCountsAreSet()
         {
-            List<int> submittedCards = new List<int>();
+            List<int[]> submittedCardsArray = new List<int[]>();
+            List<int> submittedCardsInt = new List<int>();
             int[] cardOne = new int[TheGame.Features];
             int[] cardTwo = new int[TheGame.Features];
             int[] cardThree = new int[TheGame.Features];
@@ -67,11 +72,14 @@ namespace SetGame.Test
             cardThree[(int)FeatureRank.Shape] = (int)Shape.Diamond;
             cardThree[(int)FeatureRank.Colour] = (int)Colour.Red;
             cardThree[(int)FeatureRank.Shading] = (int)Shading.Solid;
-            submittedCards.Add(TheGame.CardArrayToInteger(cardOne));
-            submittedCards.Add(TheGame.CardArrayToInteger(cardTwo));
-            submittedCards.Add(TheGame.CardArrayToInteger(cardThree));
+            submittedCardsArray.Add(cardOne);
+            submittedCardsArray.Add(cardTwo);
+            submittedCardsArray.Add(cardThree);
+            submittedCardsInt.Add(TheGame.CardArrayToInteger(cardOne));
+            submittedCardsInt.Add(TheGame.CardArrayToInteger(cardTwo));
+            submittedCardsInt.Add(TheGame.CardArrayToInteger(cardThree));
 
-            Assert.IsTrue(TheGame.IsSet(submittedCards));
+            Assert.IsTrue(TheGame.IsSetInts(submittedCardsInt) && TheGame.IsSetArrays(submittedCardsArray));
         }
 
         /// <summary>
@@ -80,7 +88,8 @@ namespace SetGame.Test
         [TestMethod]
         public void SingleDiamondsWithDifferentColorsAndShadingAreSet()
         {
-            List<int> submittedCards = new List<int>();
+            List<int[]> submittedCardsArray = new List<int[]>();
+            List<int> submittedCardsInt = new List<int>();
             int[] cardOne = new int[TheGame.Features];
             int[] cardTwo = new int[TheGame.Features];
             int[] cardThree = new int[TheGame.Features];
@@ -96,11 +105,14 @@ namespace SetGame.Test
             cardThree[(int)FeatureRank.Shape] = (int)Shape.Diamond;
             cardThree[(int)FeatureRank.Colour] = (int)Colour.Green;
             cardThree[(int)FeatureRank.Shading] = (int)Shading.Solid;
-            submittedCards.Add(TheGame.CardArrayToInteger(cardOne));
-            submittedCards.Add(TheGame.CardArrayToInteger(cardTwo));
-            submittedCards.Add(TheGame.CardArrayToInteger(cardThree));
+            submittedCardsArray.Add(cardOne);
+            submittedCardsArray.Add(cardTwo);
+            submittedCardsArray.Add(cardThree);
+            submittedCardsInt.Add(TheGame.CardArrayToInteger(cardOne));
+            submittedCardsInt.Add(TheGame.CardArrayToInteger(cardTwo));
+            submittedCardsInt.Add(TheGame.CardArrayToInteger(cardThree));
 
-            Assert.IsTrue(TheGame.IsSet(submittedCards));
+            Assert.IsTrue(TheGame.IsSetInts(submittedCardsInt) && TheGame.IsSetArrays(submittedCardsArray));
         }
 
         /// <summary>
@@ -109,7 +121,8 @@ namespace SetGame.Test
         [TestMethod]
         public void OneRedSolidDiamondTwoGreenShadedSquigglesAndThreeBlueEmptyOvalsAreSet()
         {
-            List<int> submittedCards = new List<int>();
+            List<int[]> submittedCardsArray = new List<int[]>();
+            List<int> submittedCardsInt = new List<int>();
             int[] cardOne = new int[TheGame.Features];
             int[] cardTwo = new int[TheGame.Features];
             int[] cardThree = new int[TheGame.Features];
@@ -125,11 +138,14 @@ namespace SetGame.Test
             cardThree[(int)FeatureRank.Shape] = (int)Shape.Oval;
             cardThree[(int)FeatureRank.Colour] = (int)Colour.Blue;
             cardThree[(int)FeatureRank.Shading] = (int)Shading.Open;
-            submittedCards.Add(TheGame.CardArrayToInteger(cardOne));
-            submittedCards.Add(TheGame.CardArrayToInteger(cardTwo));
-            submittedCards.Add(TheGame.CardArrayToInteger(cardThree));
+            submittedCardsArray.Add(cardOne);
+            submittedCardsArray.Add(cardTwo);
+            submittedCardsArray.Add(cardThree);
+            submittedCardsInt.Add(TheGame.CardArrayToInteger(cardOne));
+            submittedCardsInt.Add(TheGame.CardArrayToInteger(cardTwo));
+            submittedCardsInt.Add(TheGame.CardArrayToInteger(cardThree));
 
-            Assert.IsTrue(TheGame.IsSet(submittedCards));
+            Assert.IsTrue(TheGame.IsSetInts(submittedCardsInt) && TheGame.IsSetArrays(submittedCardsArray));
         }
 
         /// <summary>
@@ -138,7 +154,8 @@ namespace SetGame.Test
         [TestMethod]
         public void TwoSolidRedSquigglesThreeSolidRedSquigglesAndOneSolidRedDiamondAreNotSet()
         {
-            List<int> submittedCards = new List<int>();
+            List<int[]> submittedCardsArray = new List<int[]>();
+            List<int> submittedCardsInt = new List<int>();
             int[] cardOne = new int[TheGame.Features];
             int[] cardTwo = new int[TheGame.Features];
             int[] cardThree = new int[TheGame.Features];
@@ -154,11 +171,14 @@ namespace SetGame.Test
             cardThree[(int)FeatureRank.Shape] = (int)Shape.Diamond;
             cardThree[(int)FeatureRank.Colour] = (int)Colour.Red;
             cardThree[(int)FeatureRank.Shading] = (int)Shading.Solid;
-            submittedCards.Add(TheGame.CardArrayToInteger(cardOne));
-            submittedCards.Add(TheGame.CardArrayToInteger(cardTwo));
-            submittedCards.Add(TheGame.CardArrayToInteger(cardThree));
+            submittedCardsArray.Add(cardOne);
+            submittedCardsArray.Add(cardTwo);
+            submittedCardsArray.Add(cardThree);
+            submittedCardsInt.Add(TheGame.CardArrayToInteger(cardOne));
+            submittedCardsInt.Add(TheGame.CardArrayToInteger(cardTwo));
+            submittedCardsInt.Add(TheGame.CardArrayToInteger(cardThree));
 
-            Assert.IsFalse(TheGame.IsSet(submittedCards));
+            Assert.IsTrue(!TheGame.IsSetInts(submittedCardsInt) && !TheGame.IsSetArrays(submittedCardsArray));
         }
 
         /// <summary>
@@ -167,7 +187,8 @@ namespace SetGame.Test
         [TestMethod]
         public void OneRedSolidDiamondOneGreenSolidDiamondAndOneBlueShadedDiamondAreNotSet()
         {
-            List<int> submittedCards = new List<int>();
+            List<int[]> submittedCardsArray = new List<int[]>();
+            List<int> submittedCardsInt = new List<int>();
             int[] cardOne = new int[TheGame.Features];
             int[] cardTwo = new int[TheGame.Features];
             int[] cardThree = new int[TheGame.Features];
@@ -183,11 +204,14 @@ namespace SetGame.Test
             cardThree[(int)FeatureRank.Shape] = (int)Shape.Diamond;
             cardThree[(int)FeatureRank.Colour] = (int)Colour.Blue;
             cardThree[(int)FeatureRank.Shading] = (int)Shading.Striped;
-            submittedCards.Add(TheGame.CardArrayToInteger(cardOne));
-            submittedCards.Add(TheGame.CardArrayToInteger(cardTwo));
-            submittedCards.Add(TheGame.CardArrayToInteger(cardThree));
+            submittedCardsArray.Add(cardOne);
+            submittedCardsArray.Add(cardTwo);
+            submittedCardsArray.Add(cardThree);
+            submittedCardsInt.Add(TheGame.CardArrayToInteger(cardOne));
+            submittedCardsInt.Add(TheGame.CardArrayToInteger(cardTwo));
+            submittedCardsInt.Add(TheGame.CardArrayToInteger(cardThree));
 
-            Assert.IsFalse(TheGame.IsSet(submittedCards));
+            Assert.IsTrue(!TheGame.IsSetInts(submittedCardsInt) && !TheGame.IsSetArrays(submittedCardsArray));
         }
 
         /// <summary>
@@ -196,7 +220,8 @@ namespace SetGame.Test
         [TestMethod]
         public void OneRedSolidDiamondTwoGreenShadedOvalsAndTwoBlueEmptySquigglesAreNotSet()
         {
-            List<int> submittedCards = new List<int>();
+            List<int[]> submittedCardsArray = new List<int[]>();
+            List<int> submittedCardsInt = new List<int>();
             int[] cardOne = new int[TheGame.Features];
             int[] cardTwo = new int[TheGame.Features];
             int[] cardThree = new int[TheGame.Features];
@@ -212,11 +237,14 @@ namespace SetGame.Test
             cardThree[(int)FeatureRank.Shape] = (int)Shape.Squiggle;
             cardThree[(int)FeatureRank.Colour] = (int)Colour.Blue;
             cardThree[(int)FeatureRank.Shading] = (int)Shading.Open;
-            submittedCards.Add(TheGame.CardArrayToInteger(cardOne));
-            submittedCards.Add(TheGame.CardArrayToInteger(cardTwo));
-            submittedCards.Add(TheGame.CardArrayToInteger(cardThree));
+            submittedCardsArray.Add(cardOne);
+            submittedCardsArray.Add(cardTwo);
+            submittedCardsArray.Add(cardThree);
+            submittedCardsInt.Add(TheGame.CardArrayToInteger(cardOne));
+            submittedCardsInt.Add(TheGame.CardArrayToInteger(cardTwo));
+            submittedCardsInt.Add(TheGame.CardArrayToInteger(cardThree));
 
-            Assert.IsFalse(TheGame.IsSet(submittedCards));
+            Assert.IsTrue(!TheGame.IsSetInts(submittedCardsInt) && !TheGame.IsSetArrays(submittedCardsArray));
         }
     }
 }

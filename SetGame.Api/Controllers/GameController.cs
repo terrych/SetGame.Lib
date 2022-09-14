@@ -57,10 +57,13 @@ namespace SetGame.Controllers
         }
 
         [HttpPut("SubmitSet")]
-        public GameViewModel SubmitSet(/*Guid gameId,*/ [FromBody] List<List<int>> input) // return board
+        public GameViewModel SubmitSet(Guid gameId, [FromBody] List<int> selectedCardIndexes) // return board
         {
-            var breakpoint = 0;
-            return new Game().InitializeNewGame(3, 4).ToViewModel(); ;
+            var theGame = _gameQueryHandler.Execute(gameId);
+            var possibleSetIndexes = selectedCardIndexes.Take(theGame.SetSize);
+            theGame.CheckSet(possibleSetIndexes);
+            _updateGameCommandHandler.Execute(new UpdateGameCommand() { GameId = gameId, Game = theGame });
+            return theGame.ToViewModel();
         }
     }
 }

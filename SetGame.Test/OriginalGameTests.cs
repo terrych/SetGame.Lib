@@ -1,4 +1,5 @@
-﻿using SetGame.Set;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SetGame.Set;
 
 namespace SetGame.Test
 {

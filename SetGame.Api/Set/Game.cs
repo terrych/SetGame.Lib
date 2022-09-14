@@ -126,24 +126,58 @@ namespace SetGame.Set
         {
             for (int i = 0; i < countToDeal; i++)
             {
-                var cardIndex = RandGen.Next(Deck.Count);
-                Board.Add(IntegerToCard(Deck[cardIndex]));
-                Deck.RemoveAt(cardIndex);
+                var deckCardIndex = RandGen.Next(Deck.Count);
+                Board.Add(IntegerToCard(Deck[deckCardIndex]));
+                Deck.RemoveAt(deckCardIndex);
             }
         }
 
-        public bool CheckSet(IEnumerable<int> submittedCards)
+        public Game CheckSet(IEnumerable<int> submittedCardsIndexes)
         {
-            var toReturn = IsSet(submittedCards);
-            if (toReturn)
+            var submittedCards = new List<int[]>();
+            foreach (var index in submittedCardsIndexes) submittedCards.Add(Board[index]);
+            var isSet = IsSetArrays(submittedCards);
+            if (isSet) // replace if length is same as setsize, and cards in deck
             {
-                foreach (var card in submittedCards)
+                if (Deck.Count)
                 {
-                    // do removal and stuff
+
                 }
+                ReplaceCards(submittedCardsIndexes);
             }
 
-            return toReturn;
+            return this;
+        }
+
+        private void ReplaceCards(IEnumerable<int> indexesOfCardsToReplace)
+        {
+            foreach (var boardCardIndex in indexesOfCardsToReplace)
+            {
+                var deckCardIndex = RandGen.Next(Deck.Count); // if deck.count is zero this ends up being 0, then we try accessing index 0 in deck and get index out of range exception
+                Board[boardCardIndex] = IntegerToCard(Deck[deckCardIndex]);
+                Deck.RemoveAt(deckCardIndex);
+            }
+        }
+
+        /// <summary>
+        /// Checks if set when cards in integer format
+        /// </summary>
+        /// <param name="submittedCardInts"></param>
+        /// <returns></returns>
+        public bool IsSetInts(IEnumerable<int> submittedCardInts)
+        {
+            if (submittedCardInts.Count() != SetSize)
+            {
+                return false;
+            }
+
+            var convertedCards = new List<int[]>();
+            foreach (var card in submittedCardInts)
+            {
+                convertedCards.Add(IntegerToCard(card));
+            }
+
+            return IsSetArrays(convertedCards);
         }
 
         /* Note that if we knew we were playing the original, this method would
@@ -152,23 +186,22 @@ namespace SetGame.Set
          * and nothing else.
          * Unfortunately since I have decided on more complicated requirements I cannot do that.
          */
-        public bool IsSet(IEnumerable<int> submittedCards)
+        /// <summary>
+        /// Checks if set when cards are in array format
+        /// </summary>
+        /// <param name="submittedCardArrays"></param>
+        /// <returns></returns>
+        public bool IsSetArrays(IEnumerable<int[]> submittedCardArrays)
         {
-            if (submittedCards.Count() != SetSize)
+            if (submittedCardArrays.Count() != SetSize)
             {
                 return false;
-            }
-
-            var convertedCards = new List<int[]>();
-            foreach (var card in submittedCards)
-            {
-                convertedCards.Add(DecimalToBaseVariations(card));
             }
 
             var hashSet = new HashSet<int>();
             for (int i = 0; i < Features; i++) // for each feature
             {
-                foreach (var card in convertedCards) // collect the values
+                foreach (var card in submittedCardArrays) // collect the values
                 {
                     hashSet.Add(card[i]);
                 }
@@ -201,8 +234,8 @@ namespace SetGame.Set
                 BoardSize = BoardSize,
                 SetSize = SetSize,
                 Board = Board,
-                SelectedCards = SelectedCards,
-                HighlightedCards = HighlightedCards,
+                SelectedCards = SelectedCards ?? new List<int[]>(),
+                HighlightedCards = HighlightedCards ?? new List<int>(),
                 Message = message
             };
             return gvm;
