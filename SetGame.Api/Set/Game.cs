@@ -127,9 +127,12 @@ namespace SetGame.Set
         {
             for (int i = 0; i < countToDeal; i++)
             {
-                var deckCardIndex = RandGen.Next(Deck.Count);
-                Board.Add(IntegerToCard(Deck[deckCardIndex]));
-                Deck.RemoveAt(deckCardIndex);
+                if (Deck.Any())
+                {
+                    var deckCardIndex = RandGen.Next(Deck.Count);
+                    Board.Add(IntegerToCard(Deck[deckCardIndex]));
+                    Deck.RemoveAt(deckCardIndex);
+                }
             }
         }
 
@@ -146,17 +149,15 @@ namespace SetGame.Set
             if (isSet) // will need to replace set if length is same as setsize, and have cards in deck
             {
                 int numberOfCardsToRemove
-                    = Board.Count >= BoardSize + SetSize ?
-                        SetSize :                                           // if true, we will need to remove all as we will not go smaller than BoardSize
-                        Math.Max(BoardSize + SetSize - Board.Count, 0);     // if false, we remove enough to return to BoardSize (or none, take the larger)
-
+                    = Math.Min(3,                               // at most, we are remobing the set
+                        Math.Max(Board.Count - BoardSize, 0));  // remove enough to get back to BoardSize, but must be non-negative
+                
                 var sortedIndexesDescending = submittedCardsIndexes.OrderBy(i => -i);
                 int index = 1;
                 foreach (var cardBoardIndex in sortedIndexesDescending)
                 {
-                    //if (index > numberOfCardsToRemove) 
-                        ReplaceCard(cardBoardIndex);
-                    //else Board.RemoveAt(cardBoardIndex);
+                    if (index > numberOfCardsToRemove && Deck.Any()) ReplaceCard(cardBoardIndex);
+                    else Board.RemoveAt(cardBoardIndex);
                     index++;
                 }
 

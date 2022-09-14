@@ -63,7 +63,12 @@ namespace SetGame.Controllers
             var possibleSetIndexes = selectedCardIndexes.Take(theGame.SetSize);
             var isSet = theGame.CheckSet(possibleSetIndexes);
             _updateGameCommandHandler.Execute(new UpdateGameCommand() { GameId = gameId, Game = theGame });
-            return theGame.ToViewModel(isSet ? "Is a set!" : "Not a set");
+            string message = isSet ? "Is a set!" : "Not a set";
+            if (!theGame.Deck.Any() && !theGame.FindSet().Any())
+            {
+                message = "There are no more possible sets. The game is over.";
+            }
+            return theGame.ToViewModel(message);
         }
     }
 }
