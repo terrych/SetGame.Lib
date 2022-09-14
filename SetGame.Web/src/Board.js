@@ -86,8 +86,8 @@ export class Board extends Component {
                         )}
                     </div>
                 )}
+            {this.props.getGame().message}
             </div>
-            /*{this.props.getGame().message}*/
         );
     }
 }

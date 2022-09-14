@@ -61,9 +61,9 @@ namespace SetGame.Controllers
         {
             var theGame = _gameQueryHandler.Execute(gameId);
             var possibleSetIndexes = selectedCardIndexes.Take(theGame.SetSize);
-            theGame.CheckSet(possibleSetIndexes);
+            var isSet = theGame.CheckSet(possibleSetIndexes);
             _updateGameCommandHandler.Execute(new UpdateGameCommand() { GameId = gameId, Game = theGame });
-            return theGame.ToViewModel();
+            return theGame.ToViewModel(isSet ? "Is a set!" : "Not a set");
         }
     }
 }

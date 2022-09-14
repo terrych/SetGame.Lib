@@ -46,7 +46,7 @@ namespace SetGame.Test
             submittedCardsInt.Add(TheGame.CardArrayToInteger(cardTwo));
             submittedCardsInt.Add(TheGame.CardArrayToInteger(cardThree));
 
-            Assert.IsTrue(TheGame.IsSetInts(submittedCardsInt) && TheGame.IsSetArrays(submittedCardsArray));
+            Assert.IsTrue(TheGame.IsSet(submittedCardsInt) && TheGame.IsSet(submittedCardsArray));
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace SetGame.Test
             submittedCardsInt.Add(TheGame.CardArrayToInteger(cardTwo));
             submittedCardsInt.Add(TheGame.CardArrayToInteger(cardThree));
 
-            Assert.IsTrue(TheGame.IsSetInts(submittedCardsInt) && TheGame.IsSetArrays(submittedCardsArray));
+            Assert.IsTrue(TheGame.IsSet(submittedCardsInt) && TheGame.IsSet(submittedCardsArray));
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace SetGame.Test
             submittedCardsInt.Add(TheGame.CardArrayToInteger(cardTwo));
             submittedCardsInt.Add(TheGame.CardArrayToInteger(cardThree));
 
-            Assert.IsTrue(TheGame.IsSetInts(submittedCardsInt) && TheGame.IsSetArrays(submittedCardsArray));
+            Assert.IsTrue(TheGame.IsSet(submittedCardsInt) && TheGame.IsSet(submittedCardsArray));
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace SetGame.Test
             submittedCardsInt.Add(TheGame.CardArrayToInteger(cardTwo));
             submittedCardsInt.Add(TheGame.CardArrayToInteger(cardThree));
 
-            Assert.IsTrue(TheGame.IsSetInts(submittedCardsInt) && TheGame.IsSetArrays(submittedCardsArray));
+            Assert.IsTrue(TheGame.IsSet(submittedCardsInt) && TheGame.IsSet(submittedCardsArray));
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace SetGame.Test
             submittedCardsInt.Add(TheGame.CardArrayToInteger(cardTwo));
             submittedCardsInt.Add(TheGame.CardArrayToInteger(cardThree));
 
-            Assert.IsTrue(!TheGame.IsSetInts(submittedCardsInt) && !TheGame.IsSetArrays(submittedCardsArray));
+            Assert.IsTrue(!TheGame.IsSet(submittedCardsInt) && !TheGame.IsSet(submittedCardsArray));
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace SetGame.Test
             submittedCardsInt.Add(TheGame.CardArrayToInteger(cardTwo));
             submittedCardsInt.Add(TheGame.CardArrayToInteger(cardThree));
 
-            Assert.IsTrue(!TheGame.IsSetInts(submittedCardsInt) && !TheGame.IsSetArrays(submittedCardsArray));
+            Assert.IsTrue(!TheGame.IsSet(submittedCardsInt) && !TheGame.IsSet(submittedCardsArray));
         }
 
         /// <summary>
@@ -244,7 +244,7 @@ namespace SetGame.Test
             submittedCardsInt.Add(TheGame.CardArrayToInteger(cardTwo));
             submittedCardsInt.Add(TheGame.CardArrayToInteger(cardThree));
 
-            Assert.IsTrue(!TheGame.IsSetInts(submittedCardsInt) && !TheGame.IsSetArrays(submittedCardsArray));
+            Assert.IsTrue(!TheGame.IsSet(submittedCardsInt) && !TheGame.IsSet(submittedCardsArray));
         }
     }
 }

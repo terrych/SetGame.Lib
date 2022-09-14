@@ -2,6 +2,7 @@
 
 namespace SetGame.Set
 {
+    // Make this class smaller
     public class Game
     {
         public Guid Id { get; set; }
@@ -132,31 +133,44 @@ namespace SetGame.Set
             }
         }
 
-        public Game CheckSet(IEnumerable<int> submittedCardsIndexes)
+        /// <summary>
+        /// Returns true if submitted cards are a set, false if not. Also replaces the cards if cards in deck are available and needed to get board to correct size.
+        /// </summary>
+        /// <param name="submittedCardsIndexes"></param>
+        /// <returns></returns>
+        public bool CheckSet(IEnumerable<int> submittedCardsIndexes)
         {
             var submittedCards = new List<int[]>();
             foreach (var index in submittedCardsIndexes) submittedCards.Add(Board[index]);
-            var isSet = IsSetArrays(submittedCards);
-            if (isSet) // replace if length is same as setsize, and cards in deck
+            var isSet = IsSet(submittedCards);
+            if (isSet) // will need to replace set if length is same as setsize, and have cards in deck
             {
-                if (Deck.Count)
-                {
+                int numberOfCardsToRemove
+                    = Board.Count >= BoardSize + SetSize ?
+                        SetSize :                                           // if true, we will need to remove all as we will not go smaller than BoardSize
+                        Math.Max(BoardSize + SetSize - Board.Count, 0);     // if false, we remove enough to return to BoardSize (or none, take the larger)
 
+                var sortedIndexesDescending = submittedCardsIndexes.OrderBy(i => -i);
+                int index = 1;
+                foreach (var cardBoardIndex in sortedIndexesDescending)
+                {
+                    //if (index > numberOfCardsToRemove) 
+                        ReplaceCard(cardBoardIndex);
+                    //else Board.RemoveAt(cardBoardIndex);
+                    index++;
                 }
-                ReplaceCards(submittedCardsIndexes);
+
+                return true;
             }
 
-            return this;
+            return false;
         }
 
-        private void ReplaceCards(IEnumerable<int> indexesOfCardsToReplace)
+        private void ReplaceCard(int boardIndexOfCardToReplace)
         {
-            foreach (var boardCardIndex in indexesOfCardsToReplace)
-            {
-                var deckCardIndex = RandGen.Next(Deck.Count); // if deck.count is zero this ends up being 0, then we try accessing index 0 in deck and get index out of range exception
-                Board[boardCardIndex] = IntegerToCard(Deck[deckCardIndex]);
-                Deck.RemoveAt(deckCardIndex);
-            }
+            var deckCardIndex = RandGen.Next(Deck.Count); // if deck.count is zero this ends up being 0, then we try accessing index 0 in deck and get index out of range exception
+            Board[boardIndexOfCardToReplace] = IntegerToCard(Deck[deckCardIndex]);
+            Deck.RemoveAt(deckCardIndex);
         }
 
         /// <summary>
@@ -164,7 +178,7 @@ namespace SetGame.Set
         /// </summary>
         /// <param name="submittedCardInts"></param>
         /// <returns></returns>
-        public bool IsSetInts(IEnumerable<int> submittedCardInts)
+        public bool IsSet(IEnumerable<int> submittedCardInts)
         {
             if (submittedCardInts.Count() != SetSize)
             {
@@ -177,7 +191,7 @@ namespace SetGame.Set
                 convertedCards.Add(IntegerToCard(card));
             }
 
-            return IsSetArrays(convertedCards);
+            return IsSet(convertedCards);
         }
 
         /* Note that if we knew we were playing the original, this method would
@@ -191,7 +205,7 @@ namespace SetGame.Set
         /// </summary>
         /// <param name="submittedCardArrays"></param>
         /// <returns></returns>
-        public bool IsSetArrays(IEnumerable<int[]> submittedCardArrays)
+        public bool IsSet(IEnumerable<int[]> submittedCardArrays)
         {
             if (submittedCardArrays.Count() != SetSize)
             {
