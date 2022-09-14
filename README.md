@@ -1,3 +1,3 @@
 # SetGame
 
-I'll get around to writing this, I promise.
+Still a work in progress. I'll soon get around to writing this properly, I promise.
