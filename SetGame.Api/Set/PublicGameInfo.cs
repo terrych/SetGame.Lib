@@ -1,6 +1,6 @@
 ﻿namespace SetGame.Api.Set
 {
-    public class GameViewModel
+    public class PublicGameInfo
     {
         public Guid Id { get; set; }
 

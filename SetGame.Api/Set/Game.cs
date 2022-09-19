@@ -234,14 +234,14 @@ namespace SetGame.Set
             return true;
         }
 
-        public GameViewModel ToViewModel()
+        public PublicGameInfo ToViewModel()
         {
             return ToViewModel(string.Empty);
         }
 
-        public GameViewModel ToViewModel(string message)
+        public PublicGameInfo ToViewModel(string message)
         {
-            var gvm = new GameViewModel()
+            var gvm = new PublicGameInfo()
             {
                 Id = Id,
                 Variations = Variations,

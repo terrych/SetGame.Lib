@@ -28,7 +28,7 @@ namespace SetGame.Controllers
         }
 
         [HttpGet("NewGame")]
-        public GameViewModel NewGame(int variations, int features) // also add setsize etc?
+        public PublicGameInfo NewGame(int variations, int features) // also add setsize etc?
         {
             var newGame = new Game().InitializeNewGame(variations, features);
             _createGameCommandHandler.Execute(new NewGameCommand() { Game = newGame });
@@ -37,7 +37,7 @@ namespace SetGame.Controllers
         }
 
         [HttpGet("FindSet")]
-        public GameViewModel FindSet(Guid gameId) // return board with highlights
+        public PublicGameInfo FindSet(Guid gameId) // return board with highlights
         {
             var theGame = _gameQueryHandler.Execute(gameId);
             var set = theGame.FindSet();
@@ -48,7 +48,7 @@ namespace SetGame.Controllers
         }
 
         [HttpGet("OpenThreeCards")]
-        public GameViewModel OpenThreeCards(Guid gameId) // return board
+        public PublicGameInfo OpenThreeCards(Guid gameId) // return board
         {
             var theGame = _gameQueryHandler.Execute(gameId);
             theGame.DealCards(3);
@@ -57,7 +57,7 @@ namespace SetGame.Controllers
         }
 
         [HttpPut("SubmitSet")]
-        public GameViewModel SubmitSet(Guid gameId, [FromBody] List<int> selectedCardIndexes) // return board
+        public PublicGameInfo SubmitSet(Guid gameId, [FromBody] List<int> selectedCardIndexes) // return board
         {
             var theGame = _gameQueryHandler.Execute(gameId);
             var possibleSetIndexes = selectedCardIndexes.Take(theGame.SetSize);
