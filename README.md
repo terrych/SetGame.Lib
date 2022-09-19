@@ -19,7 +19,7 @@ A set is 3 cards which have the same, or different variations for each of these 
 
 The first player to find a set (in the card game they would yell "Set") gets to keep these cards and 3 more cards are dealt from the deck to replace the removed cards (unless there are more than 12 cards on the board). If there are no sets on the board 3 more cards can be dealt to try and ensure there will be a set on the board. If the deck is empty and there are no sets on the board then the game ends and the winner is the player who has found the most sets.
 
-### Some numbers related to the above
+### Some numbers and strategy related to the above
 *Coming soon*
 
 ## Tidy-up/fixes needed
