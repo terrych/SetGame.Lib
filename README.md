@@ -27,6 +27,7 @@ The first player to find a set (in the card game they would yell "Set") gets to 
 + The submit set code in Board.js is currently only giving a good UX if there is low latency.
 + A lot of CSS work around centering icons and ensuring app is usable when window is resized.
 + Add a timer to the front end.
++ Move the Enums for features from API to Test? Want to make sure the API project doesn't accidentally end up using these as API should not worry about this.
 
 ## Planned Features (no order of priority)
 + Adjust colours functionality for red-green colour-blind people. May need to change how card shapes are rendered.
