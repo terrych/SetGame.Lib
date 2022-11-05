@@ -60,6 +60,9 @@
     border-radius: 4px;
     margin-bottom: 5px;
     height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .board__card--selected {

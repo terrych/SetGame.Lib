@@ -126,10 +126,12 @@ export class Card extends Component {
                 onClick={(e) => this.handleCardClick(e)}
                 position={this.props.position}
             >
-                {Array(this.props.array[countRank] + 1).fill(1).map((el, i) =>
-                    returnImage(el, i, getIcon(this.props.array))
-                )}
-            </div>
+                <div>
+                    {Array(this.props.array[countRank] + 1).fill(1).map((el, i) =>
+                        returnImage(el, i, getIcon(this.props.array))
+                    )}
+                </div>
+            </div>/*{color }*/
         );
     }
 }
