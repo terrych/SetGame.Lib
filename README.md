@@ -5,11 +5,7 @@ A version of the game [Set](https://www.playmonster.com/brands/set/) but with so
 
 ## Description
 
-*I wrote this project as an excuse to try out ReactJS and try out some different algorithms for finding sets on the board. As such this ReadMe is not going to be focused on the usual tech side of things but I will try to summarize that side of things before moving onto the more interesting stuff.*
-
-The back-end project (SetGame.Api) is written in C# and it communicates with the UI via a [.Net 6.0 Web Api](https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api?view=aspnetcore-6.0&tabs=visual-studio). I have currently been developing it on a Windows 11 machine and have configured Entity Framework to use MSSqlServer so any changes may require adjustments to the config for this project.
-
-The front-end project (SetGame.Web) is a React project and was mostly created following [this](https://learn.microsoft.com/en-us/visualstudio/javascript/tutorial-asp-net-core-with-react?source=recommendations&view=vs-2022). Likely the most important thing to ensure in the config here is that the proxy url in package.json and the appProxy target in setupProxy.js is the same as the applicationUrl in SetGame.Api's launchSettings.json.
+*I wrote this project as an excuse to try out ReactJS and try out some different algorithms for finding sets on the board. This repo has been split out from the other repo (SetGame) originally containing these classes as part of a website. This is a separate repo as it seemed like a good candidate for a nuget package.*
 
 
 ## How to play Set
@@ -20,17 +16,14 @@ A set is 3 cards which have the same, or different variations for each of these 
 The first player to find a set (in the card game they would yell "Set") gets to keep these cards and 3 more cards are dealt from the deck to replace the removed cards (unless there are more than 12 cards on the board). If there are no sets on the board 3 more cards can be dealt to try and ensure there will be a set on the board. If the deck is empty and there are no sets on the board then the game ends and the winner is the player who has found the most sets.
 
 ### Some numbers and strategy related to the above
-*Coming soon*
+The number of cards in a deck is given by the number of variations, v, (default 3) to the power of the number of features, f, (default 4). This gives us the 3^4 = 81 cards in a deck for the default game of Set. A set should be the same size as the number of variations for all viable forms of the game.
+
+If you pick any two cards in the default game of Set, one of the remaining 79 cards will form the set. This means that the number of possible sets is the number of ways of choosing (v-1) cards from the deck. In the case of the default game this is 81C2 = (81×80)/(3-1) = 81×40 = 3240 possible sets.
+
+With a board size of 12 (the default) and set size of 3, for a computer to iterate through all possible pairs of cards on the board there are a maximum of 12C2 = 66 possible combinations to check (of course if we get to the final two cards on the board we can discount this being a possible set since we must have already found a set containing these two cards by now, however in practice it's probably not worth ignoring this case in the code). This is a fairly reasonable number of combinations of cards to check, however this could stop being the case in larger versions of the game. The worst case number to check will grow with O(b^(v-1)) where b is the board size.
+
+In the default version of the game, for there to be no sets on the board we cannot have more than (v-1)^f cards on the board. This is the maximum number of cards we can have where none of the combinations of v cards will have either all the same or all different values for each member of the set. In the default game this is 2^4 = 16 cards. To see this, note that for each possible set there must be at least on feature that has all possible variations. This means that to have no sets and the maximum possible number of cards, we must be missing one variation from all features across all cards on the deck. This leaves us with (v-1) variations for each of the f features hence (v-1)^f cards.
 
 ## Tidy-up/fixes needed
 + The Game class is way too big.
-+ The submit set code in Board.js is currently only giving a good UX if there is low latency.
-+ A lot of CSS work around centering icons and ensuring app is usable when window is resized.
-+ Add a timer to the front end.
-+ Move the Enums for features from API to Test? Want to make sure the API project doesn't accidentally end up using these as API should not worry about this.
 
-## Planned Features (no order of priority)
-+ Adjust colours functionality for red-green colour-blind people. May need to change how card shapes are rendered.
-+ Make number of features and variations configurable.
-+ Multiplayer (try using SignalR, deal 3 cards if no set found after certain time, may need signature to authenticate game state).
-+ Play against computer (configurable time taken for computer to find set (with random variation)).
