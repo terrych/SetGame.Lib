@@ -1,6 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SetGame.Set.CardElements;
-using SetGame.Set.CardElements.FeatureEnums;
+﻿using SetGame.Lib.Test.CardElements;
+using SetGame.Lib.Test.CardElements.FeatureEnums;
 
 namespace SetGame.Test
 {

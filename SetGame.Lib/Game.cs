@@ -1,6 +1,4 @@
-﻿using SetGame.Api.Set;
-
-namespace SetGame.Set
+﻿namespace SetGame.Lib
 {
     // Make this class smaller
     public class Game

@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
-using SetGame.Set;
+using SetGame.Lib;
 
 namespace SetGame.Test
 {

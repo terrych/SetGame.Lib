@@ -1,7 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SetGame.Set;
-
-namespace SetGame.Test
+﻿namespace SetGame.Test
 {
     /// <summary>
     /// For visualization number takes form: Position3, position 2, position 1, position 0

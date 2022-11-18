@@ -1,4 +1,7 @@
-﻿namespace SetGame.Api.Set
+﻿using System;
+using System.Collections.Generic;
+
+namespace SetGame.Lib
 {
     public class PublicGameInfo
     {
